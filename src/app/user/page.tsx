@@ -35,7 +35,6 @@ const UserPage = () => {
   const [selectedJobTitle, setSelectedJobTitle] = useState('all')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [newUser, setNewUser] = useState({
     username: '',
     idUser: '',
@@ -68,12 +67,6 @@ const UserPage = () => {
   }
 
   const handleEditClick = (user: User) => {
-    setSelectedUser(user)
-    setNewUser({
-      username: user.username,
-      idUser: user.idUser,
-      jobTitle: user.jobTitle
-    })
     setIsEditModalOpen(true)
   }
 

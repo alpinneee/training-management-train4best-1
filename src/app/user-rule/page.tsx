@@ -4,6 +4,13 @@ import React, { useState } from 'react'
 import Navbar from '@/components/common/Navbar'
 import Sidebar from '@/components/common/Sidebar'
 
+interface UserRule {
+  no: number;
+  roleName: string;
+  description: string;
+  status: string;
+}
+
 const UserRulePage = () => {
   const userRules = [
     { no: 1, roleName: 'Super Admin', description: 'Full access to all features', status: 'Active' },
@@ -16,7 +23,7 @@ const UserRulePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const [selectedRule, setSelectedRule] = useState(null)
+  const [selectedRule, setSelectedRule] = useState<UserRule | null>(null)
   const [newRule, setNewRule] = useState({
     roleName: '',
     description: '',
@@ -24,7 +31,7 @@ const UserRulePage = () => {
   })
   const itemsPerPage = 10
 
-  const handleEditClick = (rule: any) => {
+  const handleEditClick = (rule: UserRule) => {
     setSelectedRule(rule)
     setNewRule({
       roleName: rule.roleName,

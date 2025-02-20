@@ -5,7 +5,13 @@ import Navbar from '@/components/common/Navbar'
 import Sidebar from '@/components/common/Sidebar'
 import Pagination from '@/components/common/Pagination'
 
-const UserPage = () => {
+interface UserType {
+  no: number;
+  idUsertype: string;
+  usertype: string;
+}
+
+const UserTypePage = () => {
   const usertype = [
     { no: 1, idUsertype: 'UT001', usertype: 'Admin' },
     { no: 2, idUsertype: 'UT002', usertype: 'Instructor' },
@@ -23,7 +29,6 @@ const UserPage = () => {
   const [selectedUsertype, setSelectedUsertype] = useState('all')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const [selectedUser, setSelectedUser] = useState(null)
   const [newUser, setNewUser] = useState({
     idUsertype: '',
     usertype: ''
@@ -54,8 +59,7 @@ const UserPage = () => {
     }))
   }
 
-  const handleEditClick = (user: any) => {
-    setSelectedUser(user)
+  const handleEditClick = (user: UserType) => {
     setNewUser({
       idUsertype: user.idUsertype,
       usertype: user.usertype
@@ -265,4 +269,4 @@ const UserPage = () => {
   )
 }
 
-export default UserPage
+export default UserTypePage
